@@ -1,5 +1,22 @@
-class Board(literal: String) {
+import java.rmi.UnexpectedException
+
+class Board(literal: String = "         ", firstPlayer: Char) {
+    var player = firstPlayer
+        private set
     private val board = Array(3) { i -> Array(3) { j -> literal[i * 3 + j] } }
+
+    val literal: String
+        get() {
+            var literal = ""
+
+            for (row in board) {
+                for (element in row) {
+                    literal += element
+                }
+            }
+
+            return literal
+        }
 
     fun getBoard(): String {
         return """
@@ -14,20 +31,13 @@ class Board(literal: String) {
         """.trimIndent()
     }
 
-    fun getLiteral(): String {
-        var literal = ""
-
-        for (row in board) {
-            for (element in row) {
-                literal += element
-            }
-        }
-
-        return literal
-    }
-
-    fun move(player: Char, row: Int, column: Int) {
+    fun move(row: Int, column: Int) {
         board[row][column] = player
+        player = when (player) {
+            'O' -> 'X'
+            'X' -> 'O'
+            else -> throw UnexpectedException("'$player' is not a player")
+        }
     }
 
     fun isValidMove(row: Int, column: Int): Boolean {
@@ -35,7 +45,7 @@ class Board(literal: String) {
         if (row > 2 || column > 2)
             return false
 
-        // cell is blank
+        // cell is not blank
         if (board[row][column] != ' ')
             return false
 
@@ -75,10 +85,22 @@ class Board(literal: String) {
         if (diagonals != ' ')
             return diagonals
 
-        val draw = !getLiteral().contains(' ')
+        val draw = !literal.contains(' ')
         if (draw)
             return '='
 
         return ' '
     }
+
+    fun emptySquaresIndexes(): Array<Int> {
+        val array = ArrayList<Int>()
+        var index = -1
+        while (literal.indexOf(' ', index + 1).also { index = it } != -1) {
+            array.add(index)
+        }
+
+        return array.toTypedArray()
+    }
+
+    fun copy(literal: String = this.literal, player: Char = this.player) = Board(literal, player)
 }

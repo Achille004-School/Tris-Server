@@ -1,37 +1,57 @@
+import kotlin.random.Random
+
 fun main(args: Array<String>) {
-    val board = Board("         ")
-    val ai = AI()
-    var player = 'X'
+    val rand = Random(System.nanoTime())
+    val board = Board(firstPlayer = if (rand.nextBoolean()) 'X' else 'O')
+    val ai = AI(rand)
 
+    var humanToPlay = rand.nextBoolean()
     while (true) {
-        println(board.getBoard())
+        val emptySquaresIndexes = board.emptySquaresIndexes()
+        if (emptySquaresIndexes.size == 1) {
+            val row = emptySquaresIndexes[0] / 3
+            val column = emptySquaresIndexes[0] % 3
 
-        if (player == 'X') {
-            print("X's Move: ")
-            val move = readln()
+            board.move(row, column)
 
-            val row = move[0].digitToInt()
-            val column = move[1].digitToInt()
-
-            if (board.isValidMove(row, column)) {
-                board.move(player, row, column)
-                player = 'O'
-            } else {
-                println("Invalid move!")
-            }
+            humanToPlay = !humanToPlay
         } else {
-            val move = ai.bestMove(board.getLiteral())
-            board.move('O', move[0], move[1])
+            println(board.getBoard())
+            if (humanToPlay) {
+                print("${board.player}'s move: ")
+                val move = readln()
 
-            println("O's Move: ${move[0]}${move[1]}")
-            player = 'X'
+                val row = move[0].digitToIntOrNull()
+                val column = move[1].digitToIntOrNull()
+
+                if (row != null && column != null && board.isValidMove(row, column)) {
+                    board.move(row, column)
+                    humanToPlay = false
+                } else {
+                    println("Invalid move!")
+                }
+            } else {
+                val move = ai.bestMove(board)
+
+                println("${board.player}'s move: ${move[0]}${move[1]}")
+                board.move(move[0], move[1])
+
+                humanToPlay = true
+            }
+            println()
         }
-        println()
 
         val state = board.gameState()
         if (state != ' ') {
             println(board.getBoard())
             println("Game over: " + if (state == '=') "draw." else "$state wins!")
+
+            if (humanToPlay) {
+                // hey, you looked for this line and found the actual Easter Egg
+                // https://github.com/Luca040619/RSA-Arduino/blob/main/RSA_Arduino.ino: (77, 8): LUCA POP3, SCARCERATELO
+                println("DID YOU JUST LOSE TO A MACHINE??? RIPBOZO LLL")
+            }
+
             break
         }
     }
