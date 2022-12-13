@@ -1,8 +1,10 @@
+package server
+
+import common.Board
 import java.math.BigDecimal
 import java.rmi.UnexpectedException
 import kotlin.random.Random
-
-class AI(random: Random) {
+internal class AI(random: Random) {
     private val rand = random
 
     fun bestMove(board: Board): Array<Int> {
@@ -17,7 +19,7 @@ class AI(random: Random) {
             newBoard.move(row, column)
             val score = minimax(newBoard, BigDecimal.ONE, newBoard.player)
 
-            println("$row$column ${score.toPlainString()}")
+            // DEBUG println("$row$column ${score.toPlainString()}")
 
             when {
                 score > bestScore -> {

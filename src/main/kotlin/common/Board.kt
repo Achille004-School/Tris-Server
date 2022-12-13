@@ -1,3 +1,5 @@
+package common
+
 import java.rmi.UnexpectedException
 
 class Board(literal: String = "         ", firstPlayer: Char) {
@@ -5,7 +7,7 @@ class Board(literal: String = "         ", firstPlayer: Char) {
         private set
     private val board = Array(3) { i -> Array(3) { j -> literal[i * 3 + j] } }
 
-    val literal: String
+    private val literal: String
         get() {
             var literal = ""
 
