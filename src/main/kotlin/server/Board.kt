@@ -56,11 +56,11 @@ class Board(literal: String = "         ", firstPlayer: Char) {
 
     private fun checkRows(): Char {
         for (i in 0..2) {
-            val row = setOf<Char>(board[i][0], board[i][1], board[i][2])
+            val row = setOf(board[i][0], board[i][1], board[i][2])
             if (row.size <= 1 && row.first() != ' ')
                 return row.first()
 
-            val column = setOf<Char>(board[0][i], board[1][i], board[2][i])
+            val column = setOf(board[0][i], board[1][i], board[2][i])
             if (column.size <= 1 && column.first() != ' ')
                 return column.first()
         }
@@ -69,8 +69,8 @@ class Board(literal: String = "         ", firstPlayer: Char) {
     }
 
     private fun checkDiagonals(): Char {
-        val topLeft = setOf<Char>(board[0][0], board[1][1], board[2][2]).size == 1
-        val topRight = setOf<Char>(board[0][2], board[1][1], board[2][0]).size == 1
+        val topLeft = setOf(board[0][0], board[1][1], board[2][2]).size == 1
+        val topRight = setOf(board[0][2], board[1][1], board[2][0]).size == 1
 
         if (topLeft || topRight)
             return board[1][1]
