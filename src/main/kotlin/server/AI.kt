@@ -1,9 +1,9 @@
 package server
 
-import common.Board
 import java.math.BigDecimal
 import java.rmi.UnexpectedException
 import kotlin.random.Random
+
 internal class AI(random: Random) {
     private val rand = random
 
@@ -11,6 +11,7 @@ internal class AI(random: Random) {
         var bestMove: ArrayList<Array<Int>> = ArrayList()
         var bestScore = BigDecimal.valueOf(-999)
 
+        // DEBUG println("AI evaluation")
         for (index in board.emptySquaresIndexes()) {
             val row = index / 3
             val column = index % 3
@@ -19,7 +20,7 @@ internal class AI(random: Random) {
             newBoard.move(row, column)
             val score = minimax(newBoard, BigDecimal.ONE, newBoard.player)
 
-            // DEBUG println("$row$column ${score.toPlainString()}")
+            // DEBUG println("$row$column eval = ${score.toPlainString()}")
 
             when {
                 score > bestScore -> {

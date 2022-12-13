@@ -10,13 +10,6 @@ fun main(args: Array<String>) {
     val isServer = args[0].toBoolean()
     val port = args[1].toInt()
 
-    // Running server
-    // gradle run --console=plain --args="true 60000"
-
-    // Running client
-    // gradle run --console=plain --args="false 60000 172.17.176.1"
-
-
     if (isServer) {
         Server(port).run()
     } else {
@@ -29,3 +22,9 @@ fun main(args: Array<String>) {
         Client(address, port).run()
     }
 }
+
+// Running server
+// gradle run --console=plain --args="true 60000"
+
+// Running client
+// gradle run --console=plain --args="false 60000 172.17.176.1"
