@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a28b569a-d0f0-4f59-83c4-01e91d79369e" name="Changes" comment="Created Client and Server, but for now only one client can play.">
+    <list default="true" id="a28b569a-d0f0-4f59-83c4-01e91d79369e" name="Changes" comment="Removed unnecessary code.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/client/Client.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/client/Client.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/common/Board.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/server/Board.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/server/AI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/server/AI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/server/Server.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/server/Server.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +127,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670934356592</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Implemented 2 players game.&#10;Added connection check in client.">
+      <created>1670971551887</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670971551887</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Removed unnecessary code.">
+      <created>1670971722779</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670971722779</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,6 +166,8 @@
     <MESSAGE value="AI can now play as first player.&#10;First player and symbol are now random.&#10;Now the last move is automatically played.&#10;Made some general code smoothing, especially in Board and AI." />
     <MESSAGE value="Updated gitignore" />
     <MESSAGE value="Created Client and Server, but for now only one client can play." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Client and Server, but for now only one client can play." />
+    <MESSAGE value="Implemented 2 players game.&#10;Added connection check in client." />
+    <MESSAGE value="Removed unnecessary code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unnecessary code." />
   </component>
 </project>

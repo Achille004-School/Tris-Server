@@ -16,7 +16,7 @@ class Client(address: String, port: Int) {
             Socket(address, port)
         } catch (e: Exception) {
             when (e.message) {
-                "Connection refused: connect" -> println("Server is not open!")
+                "Connection refused: connect", "Connection timed out: connect" -> println("Server is not open!")
                 else -> e.printStackTrace()
             }
             null
