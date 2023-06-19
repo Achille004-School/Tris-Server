@@ -1,7 +1,7 @@
 # Tris Server
 
 This program provides both server and client of a tris server, which supports a Player-vs-Player mode and a Player-vs-AI mode.  
-The IA uses the same algorithm as [this repository](https://github.com/Achille004/Tris) on my personal account.
+The AI uses the same minimax algorithm as [this repository](https://github.com/Achille004/Tris) on my personal account.
 
 
 To play it, you first have to start the server and then the client(s).  
